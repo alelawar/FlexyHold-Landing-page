@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.active-menu {
+    @apply  bg-black/20 rounded-full;
+}
+
+.product {
+    @apply bg-white rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition duration-300
+}
+
+@keyframes appear {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+      filter: blur(5px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px); /* Naik 10px */
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+  
+@keyframes fadeRight {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+      filter: blur(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0px);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes fadeUp {
+  from {
+    transform: translateY(60px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+  .appear {
+    animation: appear 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-timeline: entry exit ;
+    animation-range: entry 10% cover 35%;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+    transform-origin: center;
+  }
+  .fade-right {
+    animation: fadeRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-timeline: entry exit ;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+    transform-origin: center;
+  }
+
+  .fade-up {
+  transform: translateY(60px);
+  animation: fadeUp 1.2s ease-in-out forwards;
+  animation-timeline: view();
+  animation-range: entry 20% cover 35%;
+}
+
+.zoom-out {
+  opacity: 0;
+  backface-visibility: hidden;
+  animation: appear 1.2s ease-in-out forwards;
+  animation-timeline: view();
+  animation-range: entry 10% cover 35%;
+  transform-origin: center;
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  animation: fadeInRight 1.2s ease-in-out forwards;
+  animation-timeline: view();
+  animation-range: entry 10% cover 15%;
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+  }
+
+.testimonial-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #CBD5E0;
+    margin: 0 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.testimonial-dot.active {
+    background-color: #F56565;
+}
+
+.feature-item {
+    max-width: 320px;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  
+  .feature-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  @media (max-width: 768px) {
+    .feature-item {
+      max-width: 100%;
+      margin-bottom: 2rem;
+    }
+  }
