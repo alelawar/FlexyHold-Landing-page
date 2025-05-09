@@ -174,14 +174,30 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-function selectModel(value) {
-  document.getElementById('modelForm').scrollIntoView({ behavior: 'smooth' })
+function selectModel(value, target) {
+  document.getElementById('modelForm').scrollIntoView({ behavior: 'smooth' });
+  const targetPopup = document.getElementById(target);
+
+  targetPopup.classList.add('hidden')
 
   const select = document.getElementById('modelSelect');
   select.value = value;
   select.dispatchEvent(new Event('change'));
 
 }
+
+function selectDetail(value) {
+  const detail = document.getElementById(value);
+  // console.log(detail);
+
+  detail.classList.remove('hidden')
+}
+
+function closeDetail(value) {
+  const detail = document.getElementById(value);
+  detail.classList.add('hidden');
+}
+
 
 function kirimWa() {
   const nama = document.getElementById('nama').value;
@@ -198,3 +214,7 @@ function kirimWa() {
 
   window.open(waURL, '_blank');
 }
+
+
+
+
